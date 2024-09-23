@@ -4,25 +4,25 @@
 using namespace std;
 
 bool validInput(string input, float &amount) {
-        bool decimalPoint = false;
-        for (char c : input) {
-            if (!isdigit(c)) {
-                if (c == '.' && !decimalPoint) {
-                    decimalPoint = true;  // Allow one decimal point
-                } else {
-                    cout << "	Invalid input. Please enter a valid number." << endl;
-                    return false;
-                }
-            }
-        }
-        try {
-            amount = stof(input);
-            return true;
+	bool decimalPoint = false;
+	for (char c : input) {
+		if (!isdigit(c)) {
+			if (c == '.' && !decimalPoint) {
+				decimalPoint = true;  // Allow one decimal point
+			} else {
+				cout << "	Invalid input. Please enter a valid number." << endl;
+				return false;
+			}
+		}
+	}
+	try {
+		amount = stof(input);
+		return true;
         } catch (...) {
-            cout << "	Invalid input. Please enter a valid number." << endl;
-            return false;
-        }
+			cout << "	Invalid input. Please enter a valid number." << endl;
+			return false;
     }
+}
 	class Account{
 		private:
 			string userInput;
@@ -61,7 +61,6 @@ bool validInput(string input, float &amount) {
 						break;
 						case 3:
 							cout<<"\n	Check Balance"<<"\n\n	Current Balance: "<<balance<<"\n	Press Any Key to Continue";
-							loopSwitch=true;
                         	getch(); system("cls");
 						break;
 						case 4:
@@ -71,17 +70,10 @@ bool validInput(string input, float &amount) {
 				}while(loopSwitch==true);
 			}
 	};
-	class CurrentAccount: public Account{
-		public:
-			CurrentAccount(float accountBalance): Account(accountBalance){}
-	};
-	class SavingsAccount: public Account{
-		public:
-			SavingsAccount(float accountBalance): Account(accountBalance){}
-	};
+	class CurrentAccount: public Account{ public: CurrentAccount(float accountBalance): Account(accountBalance){}};
+	class SavingsAccount: public Account{ public: SavingsAccount(float accountBalance): Account(accountBalance){}};
 int main(){
-	CurrentAccount curAccount(0);
-	SavingsAccount savAccount(1000);
+	CurrentAccount curAccount(0);	SavingsAccount savAccount(1000);
 	bool loop=true;
 	int switchInput;
 	
